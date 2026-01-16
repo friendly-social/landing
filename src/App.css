@@ -1,0 +1,16 @@
+.surface {
+    min-height: 100dvh;
+    background: var(--color-background);
+}
+
+.toolbar {
+    max-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    background: var(--color-group-background);
+    padding: 7px;
+}
+
+button.icon {
+
+}
