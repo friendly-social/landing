@@ -6,5 +6,6 @@
         display: block;
         border: 5px solid black;
         border-radius: 15px;
+        background: var(--color-background);
     }
 }

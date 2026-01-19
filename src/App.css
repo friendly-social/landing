@@ -34,6 +34,15 @@
             height: 100%;
         }
     }
+
+    .open {
+        background: var(--color-accent);
+        color: #ffffff;
+        font-size: var(--text-md);
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 8px;
+    }
 }
 
 .section-spacer {
@@ -167,7 +176,6 @@
         img {
             height: 100%;
             width: 100%;
-            background: var(--color-background);
         }
     }
 
@@ -179,7 +187,6 @@
         img {
             height: 100%;
             width: 100%;
-            background: var(--color-background);
         }
     }
 
@@ -187,30 +194,18 @@
         height: 230px;
         width: 230px;
         margin-left: -30px;
-        border-color: var(--color-background);
-        background: var(--color-background);
         border-radius: 15px;
 
         img {
             object-fit: contain;
             height: 100%;
             width: 100%;
-            background: var(--color-background);
         }
     }
 }
 
 button {
     cursor: pointer;
-}
-
-button.accent {
-    background: var(--color-accent);
-    color: #ffffff;
-    font-size: var(--text-md);
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 8px;
 }
 
 .prefooter {

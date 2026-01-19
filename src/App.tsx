@@ -12,7 +12,9 @@ import appleAccent from "/apple-accent.svg";
 import androidAccent from "/android-accent.svg";
 import webAccent from "/web-accent.svg";
 import { Phone } from "./Phone.tsx";
+import { useSearchParams } from "@solidjs/router";
 import type { JSXElement } from "solid-js";
+import { Show } from "solid-js";
 
 export function App(): JSXElement {
     return (
@@ -24,17 +26,31 @@ export function App(): JSXElement {
 }
 
 function Toolbar(): JSXElement {
+    const [params] = useSearchParams();
     return (
         <div class="toolbar-container">
             <div class="toolbar">
                 <a class="icon" href="#">
                     <img src={appIconBanner} alt="Friendly Icon" />
                 </a>
-                {/* <div class="flex"> */}
-                {/*     <button class="accent">Open in app...</button> */}
-                {/* </div> */}
+                <Show when={params.reference}>
+                    <OpenLink reference={params.reference as string} />
+                </Show>
             </div>
         </div>
+    );
+}
+
+interface OpenLinkProps {
+    reference: string;
+}
+
+function OpenLink({ reference }: OpenLinkProps): JSXElement {
+    const decoded = decodeURIComponent(reference);
+    return (
+        <a class="open" href={`friendly://${decoded}`}>
+            Open in app...
+        </a>
     );
 }
 
