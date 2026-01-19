@@ -10,6 +10,7 @@
     top: 0;
     z-index: 2;
     width: 100%;
+    padding: 7px;
 }
 
 .toolbar {
@@ -21,7 +22,6 @@
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     padding: 7px;
-    margin: 7px;
     border-radius: 8px;
     border-width: 1px;
     border-color: var(--color-border);
