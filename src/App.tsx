@@ -14,7 +14,7 @@ import webAccent from "/web-accent.svg";
 import { Phone } from "./Phone.tsx";
 import { useSearchParams } from "@solidjs/router";
 import type { JSXElement } from "solid-js";
-import { Show } from "solid-js";
+import { Show, createEffect } from "solid-js";
 
 export function App(): JSXElement {
     return (
@@ -47,8 +47,16 @@ interface OpenLinkProps {
 
 function OpenLink({ reference }: OpenLinkProps): JSXElement {
     const decoded = decodeURIComponent(reference);
+    const url = `friendly://${decoded}`;
+    createEffect(() => {
+        const href = window.location.href;
+        window.location.href = url;
+        setTimeout(() => {
+            window.location.href = href;
+        }, 100);
+    });
     return (
-        <a class="open" href={`friendly://${decoded}`}>
+        <a class="open" href={url}>
             Open in app...
         </a>
     );
