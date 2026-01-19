@@ -18,7 +18,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background: var(--color-group-background); */
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     padding: 7px;
@@ -168,6 +167,7 @@
         img {
             height: 100%;
             width: 100%;
+            background: var(--color-background);
         }
     }
 
@@ -179,6 +179,7 @@
         img {
             height: 100%;
             width: 100%;
+            background: var(--color-background);
         }
     }
 
@@ -194,6 +195,7 @@
             object-fit: contain;
             height: 100%;
             width: 100%;
+            background: var(--color-background);
         }
     }
 }
@@ -221,8 +223,7 @@ button.accent {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 20px;
-    padding-bottom: 40px;
+    padding: 30px;
     color: var(--color-primary);
     font-size: var(--text-sm);
     align-items: center;
@@ -230,6 +231,7 @@ button.accent {
     img {
         height: 20px;
     }
+
     a {
         color: var(--color-accent);
     }

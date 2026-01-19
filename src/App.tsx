@@ -61,9 +61,9 @@ function WhatIsFriendly(): JSXElement {
             <h1 class="title-centered">What is Friendly?</h1>
             <p>
                 They say you are connected to anyone with 6 degrees of
-                separation. But instead of chasing the entire world, why not to
-                focus on expanding the network you already have? Friendly is a
-                private social network built on real connections.
+                separation. But instead of chasing the entire world, why not try
+                to focus on expanding the network you already have? Friendly is
+                a private social network built on real connections.
             </p>
             <div class="section-spacer" />
             <div class="friendly-chip-grid">
