@@ -219,9 +219,16 @@ function Web(): JSXElement {
 function Footer(): JSXElement {
     const github = "https://github.com/friendly-social";
 
-    return <div class="footer">
-        <img src={construction} />
-        <p>This project is under construction.</p>
-        <p>GitHub: <b><a href={github}>friendly-social</a></b></p>
-    </div>
+    return (
+        <div class="footer">
+            <img src={construction} />
+            <p>This project is under construction.</p>
+            <p>
+                GitHub:{" "}
+                <b>
+                    <a href={github}>friendly-social</a>
+                </b>
+            </p>
+        </div>
+    );
 }
