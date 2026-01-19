@@ -19,7 +19,6 @@ export default defineConfig(
                 }
             ],
             "@typescript-eslint/explicit-function-return-type": ["error"],
-            // "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true }],
         },
     },
 );

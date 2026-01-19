@@ -2,9 +2,6 @@
 import { render } from "solid-js/web";
 import "./index.css";
 import { App } from "./App.tsx";
-import { updateClassList } from "./dark-mode.ts";
-
-updateClassList();
 
 const root = document.getElementById("root");
 

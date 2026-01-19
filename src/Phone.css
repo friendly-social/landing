@@ -1,0 +1,10 @@
+.phone {
+    height: 100%;
+    width: 100%;
+
+    img {
+        display: block;
+        border: 5px solid black;
+        border-radius: 15px;
+    }
+}

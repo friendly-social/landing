@@ -3,37 +3,23 @@
 @tailwind base;
 
 @theme {
-  --color-background: #ffffff;
-  --color-group-background: #f2f2f7;
-  --color-foreground: #000000;
+    --color-background: #f2f2f7;
+    --color-group-background: #ffffff;
+    --color-foreground: #000000;
 
-  --color-primary: #000000;
-  --color-secondary: #8e8e93;
-  --color-accent: #007aff;
-
-  --color-border: #d8d8dc;
-}
-
-@layer theme {
-  .dark {
-    --color-background: #000000;
-    --color-group-background: #1c1c1e;
-    --color-foreground: #ffffff;
-
-    --color-primary: #ffffff;
+    --color-primary: #000000;
     --color-secondary: #8e8e93;
-    --color-accent: #0a84ff;
+    --color-accent: #007aff;
 
-    --color-border: #3a3a3c;
-  }
+    --color-border: #d8d8dc;
+    --color-shadow: #00000020;
 }
 
 :root {
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    color: #ff0000; /* noticeable if anything doesn't use custom component */
     line-height: 1.5;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #ff0000; /* noticeable if anything doesn't use custom component */
 }

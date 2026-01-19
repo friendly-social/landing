@@ -1,0 +1,16 @@
+<svg width="866" height="968" viewBox="0 0 866 968" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M131 172L353.025 388.934" stroke="#CFE3FF" stroke-width="30"/>
+<path d="M353.736 389.908L358 117" stroke="#CFE3FF" stroke-width="30"/>
+<path d="M55 390L353.736 389.908" stroke="#CFE3FF" stroke-width="30"/>
+<path d="M358.439 389.745L811 390" stroke="#CFE3FF" stroke-width="30"/>
+<path d="M340 850L353.736 389.908" stroke="#CFE3FF" stroke-width="30"/>
+<path d="M701 740L353.025 388.934" stroke="#CFE3FF" stroke-width="30"/>
+<circle cx="340" cy="850" r="55" fill="#CFE3FF"/>
+<circle cx="353.148" cy="389.321" r="125.2" fill="#CFE3FF"/>
+<circle cx="131" cy="172" r="55" fill="#CFE3FF"/>
+<path d="M413 117C413 147.376 388.376 172 358 172C327.624 172 303 147.376 303 117C303 86.6243 327.624 62 358 62C388.376 62 413 86.6243 413 117Z" fill="#CFE3FF"/>
+<circle cx="701" cy="740" r="55" fill="#CFE3FF"/>
+<circle cx="55" cy="388" r="55" fill="#CFE3FF"/>
+<circle cx="811" cy="389" r="55" fill="#CFE3FF"/>
+<path d="M249.568 775V193.182H634.795V294.602H372.58V433.239H609.227V534.659H372.58V775H249.568Z" fill="#007AFF"/>
+</svg>
