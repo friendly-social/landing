@@ -10,7 +10,7 @@ export default defineConfig(
             "semi": [2, "always"],
             "quotes": ["warn", "double", { "avoidEscape": true }],
             "comma-dangle": ["warn", "always-multiline"],
-            "no-unused-vars": [
+            "@typescript-eslint/no-unused-vars": [
                 "warn",
                 {
                     argsIgnorePattern: "^_",

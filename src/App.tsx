@@ -12,57 +12,96 @@ import appleAccent from "/apple-accent.svg";
 import androidAccent from "/android-accent.svg";
 import webAccent from "/web-accent.svg";
 import { Phone } from "./Phone.tsx";
+import type { SearchParams } from "@solidjs/router";
 import { useSearchParams } from "@solidjs/router";
-import type { JSXElement } from "solid-js";
-import { Show, createEffect } from "solid-js";
+import type { JSXElement, Signal } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 
 export function App(): JSXElement {
+    const [search] = useSearchParams();
+    createEffect(() => {
+        startRedirect({ search });
+    });
+
+    const platforms = createSignal<HTMLElement | undefined>();
+
     return (
         <div class="surface">
-            <Toolbar />
-            <Content />
+            <Toolbar platforms={platforms} search={search} />
+            <Content platforms={platforms} />
         </div>
     );
 }
 
-function Toolbar(): JSXElement {
-    const [params] = useSearchParams();
+interface StartRedirectParams {
+    search: SearchParams;
+}
+
+function startRedirect(params: StartRedirectParams): void {
+    if (!params.search.reference) return;
+    const decoded = decodeURIComponent(params.search.reference as string);
+    const url = `friendly://${decoded}`;
+    const href = window.location.href;
+    window.location.href = url;
+    setTimeout(() => {
+        window.location.href = href;
+    }, 100);
+}
+
+interface ToolbarProps {
+    platforms: Signal<HTMLElement | undefined>;
+    search: SearchParams;
+}
+
+function Toolbar(props: ToolbarProps): JSXElement {
     return (
         <div class="toolbar-container">
             <div class="toolbar">
-                <a class="icon" href="#">
-                    <img src={appIconBanner} alt="Friendly Icon" />
-                </a>
-                <Show when={params.reference}>
-                    <OpenLink reference={params.reference as string} />
-                </Show>
+                <img class="icon" src={appIconBanner} alt="Friendly Icon" />
+                <ActionButton
+                    platforms={props.platforms}
+                    search={props.search}
+                />
             </div>
         </div>
     );
 }
 
-interface OpenLinkProps {
-    reference: string;
+interface ActionButtonProps {
+    platforms: Signal<HTMLElement | undefined>;
+    search: SearchParams;
 }
 
-function OpenLink({ reference }: OpenLinkProps): JSXElement {
-    const decoded = decodeURIComponent(reference);
-    const url = `friendly://${decoded}`;
-    createEffect(() => {
-        const href = window.location.href;
-        window.location.href = url;
-        setTimeout(() => {
-            window.location.href = href;
-        }, 100);
-    });
+function ActionButton(props: ActionButtonProps): JSXElement {
+    const [params] = useSearchParams();
+    const hasReference = (): boolean => params.reference != null;
     return (
-        <a class="open" href={url}>
-            Open in app...
-        </a>
+        <button class="open" onclick={() => onActionButtonClick(props)}>
+            {hasReference() ? "Open in app..." : "Download"}
+        </button>
     );
 }
 
-function Content(): JSXElement {
+interface OnActionButtonClickProps {
+    platforms: Signal<HTMLElement | undefined>;
+    search: SearchParams;
+}
+
+function onActionButtonClick(props: OnActionButtonClickProps): void {
+    const [platforms] = props.platforms;
+    platforms()?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+    });
+    startRedirect({ search: props.search });
+}
+
+interface ContentProps {
+    platforms: Signal<HTMLElement | undefined>;
+}
+
+function Content(props: ContentProps): JSXElement {
+    const [_, setPlatforms] = props.platforms;
     return (
         <div class="content">
             <div class="h-[64px]" />
@@ -72,7 +111,7 @@ function Content(): JSXElement {
             <WhatIsFriendly />
             <div class="section-spacer" />
             <div class="section-spacer" />
-            <Platforms />
+            <Platforms setPlatforms={setPlatforms} />
             <hr class="prefooter" />
             <Footer />
         </div>
@@ -152,10 +191,16 @@ function Confidential(): JSXElement {
     );
 }
 
-function Platforms(): JSXElement {
+interface PlatformsProps {
+    setPlatforms: (element: HTMLElement) => void;
+}
+
+function Platforms(props: PlatformsProps): JSXElement {
     return (
         <div class="platform-grid-container">
-            <h1 class="title-centered">How to use?</h1>
+            <h1 ref={props.setPlatforms} class="title-centered">
+                How to use?
+            </h1>
             <div class="platform-grid">
                 <Android />
                 <Ios />

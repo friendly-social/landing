@@ -29,10 +29,6 @@
         height: 100%;
         padding: 5px;
         cursor: pointer;
-
-        img {
-            height: 100%;
-        }
     }
 
     .open {
