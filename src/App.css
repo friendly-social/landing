@@ -119,24 +119,15 @@
     }
 }
 
-.platform-grid-container {
-    > .title-centered {
-        margin-bottom: 20px;
-    }
-}
-
 .platform-grid {
     display: flex;
     flex-flow: row wrap;
     row-gap: 20px;
     column-gap: 50px;
     padding: 0 50px;
+    padding-top: 28px;
     justify-content: center;
     align-items: center;
-
-    > .title-centered {
-        padding-bottom: 10px;
-    }
 }
 
 .platform:has(.tablet) {
