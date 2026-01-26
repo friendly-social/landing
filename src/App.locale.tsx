@@ -133,12 +133,62 @@ const ruLocale: Locale = {
     },
 };
 
+const beLocale: Locale = {
+    appName: "Friendly",
+    iconAlt: "Малюнак Friendly",
+    openInApp: "Адкрыць у праграме...",
+    download: "Спампаваць",
+    whatIsFriendly: {
+        title: "Што такое Friendly?",
+        body: "Кажуць, усе людзі ў свеце падзеленыя ўсяго шасцю поціскамі рукі. Але замест таго каб прабаваць ахапіць увесь свет, чаму б не надаць увагу пашырэнню ўжо існуючага круга знаёмстваў? Friendly - гэта прыватная сацыяльная сетка, пабудаваная на рэальных сувязях.",
+    },
+    noGlobalSearch: {
+        title: "Без глабальнага пошуку",
+        body: "Ніякіх незнаёмых рэакцый і гонак за папулярнасцю. Новыя знаёмствы пачынаюцца праз існуючыя сувязі.",
+    },
+    noCreeps: {
+        title: "Без дзіўных людзей",
+        body: "Звязацца з вамі магчыма толькі праз агульных сяброў. Ніякага спаму і лішняй увагі.",
+    },
+    naturalFit: {
+        title: "Асаблівая атмасфера",
+        body: "Дзякуючы даверанай сеткі ствараецца агульны кантэкст, таму заўсёды ёсць пра што пагаварыць з новымі знаёмымі.",
+    },
+    confidential: {
+        title: "Свабода самавыяўлення",
+        body: "Ваш профіль будуць бачыць толькі людзі з блізкага круга, што дазваляе захоўваць асабісты прастор.",
+    },
+    platforms: {
+        title: "Як пачаць выкарыстоўваць?",
+        forIos: (
+            <>
+                Friendly для <b>iOS</b>
+            </>
+        ),
+        forAndroid: (
+            <>
+                Friendly для <b>Android</b>
+            </>
+        ),
+        forWeb: (
+            <>
+                Friendly для <b>Web</b>
+            </>
+        ),
+    },
+    footer: {
+        underConstruction: "Праект знаходзіцца ў распрацоўкі",
+    },
+};
+
 export function getLocale(code: LocaleCode): Locale {
     switch (code) {
         case "en":
             return enLocale;
         case "ru":
             return ruLocale;
+        case "be":
+            return beLocale;
         default:
             assert(code);
     }
