@@ -1,4 +1,4 @@
-export type LocaleCode = "en" | "ru" | "be";
+export type LocaleCode = "en" | "ru" | "be" | "uk";
 
 export function getLocaleCode(): LocaleCode {
     for (const language of navigator.languages) {
@@ -11,11 +11,12 @@ export function getLocaleCode(): LocaleCode {
             case "kk": // Kazakh
             case "tg": // Tajik
             case "ky": // Kyrgyz
-            case "uk": // Ukrainian
             case "ru": // Russian
                 return "ru";
             case "be":
                 return "be";
+            case "uk":
+                return "uk";
         }
     }
     return "en";
