@@ -181,6 +181,54 @@ const beLocale: Locale = {
     },
 };
 
+const ukLocale: Locale = {
+    appName: "Friendly",
+    iconAlt: "Іконка Friendly",
+    openInApp: "Відкрити в застосунку...",
+    download: "Завантажити",
+    whatIsFriendly: {
+        title: "Що таке Friendly?",
+        body: "Кажуть, що всі люди у світі розділені лише шістьма рукостисканнями. Але замість того, щоб намагатися охопити весь світ, чому б не зосередитись на розширенні вже існуючого кола знайомств? Friendly — це приватна соціальна мережа, побудована на реальних зв’язках.",
+    },
+    noGlobalSearch: {
+        title: "Без глобального пошуку",
+        body: "Жодних фейкових реакцій і гонитви за популярністю. Нові знайомства починаються через існуючі зв’язки.",
+    },
+    noCreeps: {
+        title: "Без дивних людей",
+        body: "Зв’язатися з вами можна лише через спільних друзів. Жодного спаму та небажаної уваги.",
+    },
+    naturalFit: {
+        title: "Особлива атмосфера",
+        body: "Завдяки довіреній мережі створюється спільний контекст, тому завжди є про що поговорити з новими знайомими.",
+    },
+    confidential: {
+        title: "Свобода самовираження",
+        body: "Ваш профіль бачать лише люди з близького кола, що дозволяє зберігати особистий простір.",
+    },
+    platforms: {
+        title: "Як почати користуватися?",
+        forIos: (
+            <>
+                Friendly для <b>iOS</b>
+            </>
+        ),
+        forAndroid: (
+            <>
+                Friendly для <b>Android</b>
+            </>
+        ),
+        forWeb: (
+            <>
+                Friendly для <b>Web</b>
+            </>
+        ),
+    },
+    footer: {
+        underConstruction: "Проєкт перебуває в розробці",
+    },
+};
+
 export function getLocale(code: LocaleCode): Locale {
     switch (code) {
         case "en":
@@ -189,6 +237,8 @@ export function getLocale(code: LocaleCode): Locale {
             return ruLocale;
         case "be":
             return beLocale;
+        case "uk":
+            return ukLocale;
         default:
             assert(code);
     }
