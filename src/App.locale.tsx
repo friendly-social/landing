@@ -48,7 +48,7 @@ const enLocale: Locale = {
     },
     noGlobalSearch: {
         title: "No global search",
-        body: "No AI slope, no fake reactions, no popularity. Find people through real connections, not by searching for strangers.",
+        body: "No AI slop, no fake reactions, no popularity. Find people through real connections, not by searching for strangers.",
     },
     noCreeps: {
         title: "No creeps",
