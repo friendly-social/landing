@@ -32,13 +32,30 @@
         cursor: pointer;
     }
 
-    .open {
-        background: var(--color-accent);
-        color: #ffffff;
-        font-size: var(--text-md);
-        font-weight: bold;
-        padding: 5px 10px;
-        border-radius: 8px;
+    > .buttons {
+        display: flex;
+        gap: 4px;
+
+        > .web-version {
+            color: var(--color-accent);
+            font-size: var(--text-md);
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        > .web-version:hover {
+            text-decoration: underline;
+        }
+
+        .open {
+            background: var(--color-accent);
+            color: #ffffff;
+            font-size: var(--text-md);
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
     }
 }
 
