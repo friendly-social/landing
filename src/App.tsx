@@ -43,9 +43,9 @@ interface StartRedirectParams {
 }
 
 function startRedirect(params: StartRedirectParams): void {
-    if (!params.search.reference) return;
-    const decoded = decodeURIComponent(params.search.reference as string);
-    const url = `friendly://${decoded}`;
+    const reference = params.search.reference;
+    if (!reference) return;
+    const url = `friendly://${reference}`;
     const href = window.location.href;
     window.location.href = url;
     setTimeout(() => {
@@ -65,14 +65,48 @@ function Toolbar(props: ToolbarProps): JSXElement {
         <div class="toolbar-container">
             <div class="toolbar">
                 <img class="icon" src={appIconBanner} alt={locale().iconAlt} />
-                <ActionButton
-                    platforms={props.platforms}
-                    search={props.search}
-                    locale={locale()}
-                />
+                <div class="buttons">
+                    {/* TODO: add mobile view with dropdown menu */}
+                    <WebVersionButton locale={locale()} search={props.search} />
+                    <ActionButton
+                        platforms={props.platforms}
+                        search={props.search}
+                        locale={locale()}
+                    />
+                </div>
             </div>
         </div>
     );
+}
+
+interface WebVersionButtonProps {
+    locale: Locale;
+    search: SearchParams;
+}
+
+function WebVersionButton(props: WebVersionButtonProps): JSXElement {
+    const locale = (): Locale => props.locale;
+    return (
+        <button
+            class="web-version"
+            onclick={() => startWebRedirect({ search: props.search })}
+        >
+            {locale().continueInBrowser}
+        </button>
+    );
+}
+
+interface StartWebRedirectParams {
+    search: SearchParams;
+}
+
+function startWebRedirect({ search }: StartWebRedirectParams): void {
+    if (search.reference) {
+        const reference = encodeURIComponent(search.reference as string);
+        window.location.href = `https://web.getfriend.ly/redirect/${reference}`;
+        return;
+    }
+    window.location.href = "https://web.getfriend.ly";
 }
 
 interface ActionButtonProps {
