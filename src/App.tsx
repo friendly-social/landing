@@ -19,6 +19,7 @@ import type { SearchParams } from "@solidjs/router";
 import { useSearchParams } from "@solidjs/router";
 import type { JSXElement } from "solid-js";
 import { createEffect, createSignal } from "solid-js";
+import { OpenDropdown } from "./OpenDropdown.tsx";
 
 export function App(): JSXElement {
     const localeCode = getLocaleCode();
@@ -61,82 +62,20 @@ interface ToolbarProps {
 
 function Toolbar(props: ToolbarProps): JSXElement {
     const locale = (): Locale => props.locale;
+    const hasReference = (): boolean => props.search.reference != null;
     return (
         <div class="toolbar-container">
             <div class="toolbar">
                 <img class="icon" src={appIconBanner} alt={locale().iconAlt} />
                 <div class="buttons">
-                    {/* TODO: add mobile view with dropdown menu */}
-                    <WebVersionButton locale={locale()} search={props.search} />
-                    <ActionButton
+                    <OpenDropdown
+                        hasRedirect={hasReference()}
                         platforms={props.platforms}
-                        search={props.search}
-                        locale={locale()}
-                    />
+                        deeplink={(search) => startRedirect({ search })} />
                 </div>
             </div>
         </div>
     );
-}
-
-interface WebVersionButtonProps {
-    locale: Locale;
-    search: SearchParams;
-}
-
-function WebVersionButton(props: WebVersionButtonProps): JSXElement {
-    const locale = (): Locale => props.locale;
-    return (
-        <button
-            class="web-version"
-            onclick={() => startWebRedirect({ search: props.search })}
-        >
-            {locale().continueInBrowser}
-        </button>
-    );
-}
-
-interface StartWebRedirectParams {
-    search: SearchParams;
-}
-
-function startWebRedirect({ search }: StartWebRedirectParams): void {
-    if (search.reference) {
-        const reference = encodeURIComponent(search.reference as string);
-        window.location.href = `https://web.getfriend.ly/redirect/${reference}`;
-        return;
-    }
-    window.location.href = "https://web.getfriend.ly";
-}
-
-interface ActionButtonProps {
-    platforms?: HTMLElement;
-    search: SearchParams;
-    locale: Locale;
-}
-
-function ActionButton(props: ActionButtonProps): JSXElement {
-    const [params] = useSearchParams();
-    const locale = (): Locale => props.locale;
-    const hasReference = (): boolean => params.reference != null;
-    return (
-        <button class="open" onclick={() => onActionButtonClick(props)}>
-            {hasReference() ? locale().openInApp : locale().download}
-        </button>
-    );
-}
-
-interface OnActionButtonClickProps {
-    platforms?: HTMLElement;
-    search: SearchParams;
-}
-
-function onActionButtonClick(props: OnActionButtonClickProps): void {
-    props.platforms?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-    });
-    startRedirect({ search: props.search });
 }
 
 interface ContentProps {

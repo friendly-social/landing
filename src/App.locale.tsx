@@ -4,9 +4,6 @@ import type { JSXElement } from "solid-js";
 export interface Locale {
     appName: string;
     iconAlt: string;
-    openInApp: string;
-    download: string;
-    continueInBrowser: string;
     whatIsFriendly: {
         title: string;
         body: string;
@@ -41,9 +38,6 @@ export interface Locale {
 const enLocale: Locale = {
     appName: "Friendly",
     iconAlt: "Friendly Icon",
-    openInApp: "Open in App...",
-    continueInBrowser: "Continue in Browser",
-    download: "Download",
     whatIsFriendly: {
         title: "What is Friendly?",
         body: "They say you are connected to anyone with 6 degrees of separation. But instead of chasing the entire world, why not try to focus on expanding the network you already have? Friendly is a private social network built on real connections.",
@@ -90,9 +84,6 @@ const enLocale: Locale = {
 const ruLocale: Locale = {
     appName: "Friendly",
     iconAlt: "Иконка Friendly",
-    openInApp: "Открыть в приложении...",
-    download: "Скачать",
-    continueInBrowser: "Веб-версия",
     whatIsFriendly: {
         title: "Что такое Friendly?",
         body: "Говорят, все люди в мире разделены всего шестью рукопожатиями. Но вместо того чтобы пытаться охватить весь мир, почему бы не уделить внимание расширению уже существующего круга знакомств? Friendly – это приватная социальная сеть, построенная на реальных связях.",
@@ -139,9 +130,6 @@ const ruLocale: Locale = {
 const beLocale: Locale = {
     appName: "Friendly",
     iconAlt: "Малюнак Friendly",
-    openInApp: "Адкрыць у праграме...",
-    download: "Спампаваць",
-    continueInBrowser: "Вэб-версія",
     whatIsFriendly: {
         title: "Што такое Friendly?",
         body: "Кажуць, усе людзі ў свеце падзеленыя ўсяго шасцю поціскамі рукі. Але замест таго каб прабаваць ахапіць увесь свет, чаму б не надаць увагу пашырэнню ўжо існуючага круга знаёмстваў? Friendly - гэта прыватная сацыяльная сетка, пабудаваная на рэальных сувязях.",
@@ -188,9 +176,6 @@ const beLocale: Locale = {
 const ukLocale: Locale = {
     appName: "Friendly",
     iconAlt: "Іконка Friendly",
-    openInApp: "Відкрити в застосунку...",
-    download: "Завантажити",
-    continueInBrowser: "Вебверсія",
     whatIsFriendly: {
         title: "Що таке Friendly?",
         body: "Кажуть, що всі люди у світі розділені лише шістьма рукостисканнями. Але замість того, щоб намагатися охопити весь світ, чому б не зосередитись на розширенні вже існуючого кола знайомств? Friendly — це приватна соціальна мережа, побудована на реальних зв’язках.",
