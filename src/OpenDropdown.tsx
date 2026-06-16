@@ -1,4 +1,4 @@
-import "./OpenDropdown.css"
+import "./OpenDropdown.css";
 import type { JSXElement } from "solid-js";
 import { useSearchParams } from "@solidjs/router";
 import { createEffect, createSignal } from "solid-js";
@@ -12,9 +12,7 @@ export interface OpenDropdownProps {
     deeplink: (search: SearchParams) => void;
 }
 
-export function OpenDropdown(
-    props: OpenDropdownProps,
-): JSXElement {
+export function OpenDropdown(props: OpenDropdownProps): JSXElement {
     const [open, setOpen] = createSignal(false);
     const locale = getLocale(getLocaleCode());
     const [search] = useSearchParams();
@@ -22,20 +20,21 @@ export function OpenDropdown(
     let ref!: HTMLDivElement;
 
     createEffect(() => {
-        const handleOutsideClick = (e: Event) => {
+        const handleOutsideClick = (e: Event): void => {
             if (!ref.contains(e.target as Node)) {
                 setOpen(false);
             }
         };
         document.addEventListener("mousedown", handleOutsideClick);
-        return () => document.removeEventListener("mousedown", handleOutsideClick);
+        return (): void =>
+            document.removeEventListener("mousedown", handleOutsideClick);
     });
 
     function onDownloadClick(): void {
         setOpen(false);
         props.platforms?.scrollIntoView({
             behavior: "smooth",
-            block: "center",
+            block: "start",
         });
     }
 
@@ -50,28 +49,29 @@ export function OpenDropdown(
 
     return (
         <div class="open-dropdown" ref={ref}>
-            <button onClick={() => setOpen(!open())}>
-                {locale.open}
-            </button>
+            <button onClick={() => setOpen(!open())}>{locale.open}</button>
             {open() && (
                 <ul>
-                  <li>
-                    <button onClick={onWebClick}>
-                      <img src="web-accent.svg"/> <p>{locale.openInWeb} </p>
-                    </button>
-                  </li>
-                  <li>
-                    {props.hasRedirect && (
-                        <button onClick={() => props.deeplink(search)}>
-                          <img src="external-link-accent.svg"/> <p>{locale.openInApp} </p>
+                    <li>
+                        <button onClick={onWebClick}>
+                            <img src="web-accent.svg" />{" "}
+                            <p>{locale.openInWeb} </p>
                         </button>
-                    )}
-                  </li>
-                  <li>
-                    <button onClick={onDownloadClick}>
-                      <img src="download-accent.svg"/> <p>{locale.download} </p>
-                    </button>
-                  </li>
+                    </li>
+                    <li>
+                        {props.hasRedirect && (
+                            <button onClick={() => props.deeplink(search)}>
+                                <img src="external-link-accent.svg" />{" "}
+                                <p>{locale.openInApp} </p>
+                            </button>
+                        )}
+                    </li>
+                    <li>
+                        <button onClick={onDownloadClick}>
+                            <img src="download-accent.svg" />{" "}
+                            <p>{locale.download} </p>
+                        </button>
+                    </li>
                 </ul>
             )}
         </div>

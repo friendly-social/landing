@@ -71,7 +71,8 @@ function Toolbar(props: ToolbarProps): JSXElement {
                     <OpenDropdown
                         hasRedirect={hasReference()}
                         platforms={props.platforms}
-                        deeplink={(search) => startRedirect({ search })} />
+                        deeplink={(search) => startRedirect({ search })}
+                    />
                 </div>
             </div>
         </div>
@@ -187,10 +188,8 @@ interface PlatformsProps {
 
 function Platforms(props: PlatformsProps): JSXElement {
     return (
-        <div class="platform-grid-container">
-            <h1 ref={props.setPlatforms} class="title-centered">
-                {props.locale.platforms.title}
-            </h1>
+        <div ref={props.setPlatforms} class="platform-grid-container">
+            <h1 class="title-centered">{props.locale.platforms.title}</h1>
             <div class="platform-grid">
                 <Android locale={props.locale} />
                 <Ios locale={props.locale} />
