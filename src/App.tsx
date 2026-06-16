@@ -209,7 +209,11 @@ interface AndroidProps {
 
 function Android(props: AndroidProps): JSXElement {
     return (
-        <div class="platform">
+        <a
+            class="platform"
+            href="https://github.com/friendly-social/ios"
+            target="_blank"
+        >
             <div class="platform-demos">
                 <Phone class="phone-1">
                     <img src={android1} />
@@ -218,15 +222,11 @@ function Android(props: AndroidProps): JSXElement {
                     <img src={android2} />
                 </Phone>
             </div>
-            <a
-                class="platform-label"
-                href="https://github.com/friendly-social/android"
-                target="_blank"
-            >
+            <div class="platform-label">
                 <img src={androidAccent} />
                 <p>{props.locale.platforms.forAndroid}</p>
-            </a>
-        </div>
+            </div>
+        </a>
     );
 }
 
@@ -236,7 +236,11 @@ interface IosProps {
 
 function Ios(props: IosProps): JSXElement {
     return (
-        <div class="platform">
+        <a
+            class="platform"
+            href="https://github.com/friendly-social/ios"
+            target="_blank"
+        >
             <div class="platform-demos">
                 <Phone class="phone-1">
                     <img src={iphone1} />
@@ -245,15 +249,11 @@ function Ios(props: IosProps): JSXElement {
                     <img src={iphone2} />
                 </Phone>
             </div>
-            <a
-                class="platform-label"
-                href="https://github.com/friendly-social/ios"
-                target="_blank"
-            >
+            <div class="platform-label">
                 <img src={appleAccent} />
                 <p>{props.locale.platforms.forIos}</p>
-            </a>
-        </div>
+            </div>
+        </a>
     );
 }
 
@@ -263,7 +263,11 @@ interface WebProps {
 
 function Web(props: WebProps): JSXElement {
     return (
-        <div class="platform">
+        <a
+            class="platform"
+            href="https://github.com/friendly-social/web"
+            target="_blank"
+        >
             <div class="platform-demos">
                 <div class="tablet">
                     <img src={web2} />
@@ -272,15 +276,11 @@ function Web(props: WebProps): JSXElement {
                     <img src={web1} />
                 </Phone>
             </div>
-            <a
-                class="platform-label"
-                href="https://github.com/friendly-social/web"
-                target="_blank"
-            >
+            <div class="platform-label">
                 <img class="p-[3px]" src={webAccent} />
                 <p>{props.locale.platforms.forWeb}</p>
-            </a>
-        </div>
+            </div>
+        </a>
     );
 }
 
