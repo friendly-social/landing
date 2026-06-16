@@ -11,6 +11,10 @@ import construction from "/construction-primary.svg";
 import iphone1 from "/iphone-1.png";
 import network from "/network.svg";
 import iphone2 from "/iphone-2.png";
+import web1 from "/web-1.png";
+import web2 from "/web-2.png";
+import android1 from "/android-1.png";
+import android2 from "/android-2.png";
 import appleAccent from "/apple-accent.svg";
 import androidAccent from "/android-accent.svg";
 import webAccent from "/web-accent.svg";
@@ -208,10 +212,10 @@ function Android(props: AndroidProps): JSXElement {
         <div class="platform">
             <div class="platform-demos">
                 <Phone class="phone-1">
-                    <img src={iphone1} />
+                    <img src={android1} />
                 </Phone>
                 <Phone class="phone-2">
-                    <img src={iphone2} />
+                    <img src={android2} />
                 </Phone>
             </div>
             <a
@@ -261,11 +265,11 @@ function Web(props: WebProps): JSXElement {
     return (
         <div class="platform">
             <div class="platform-demos">
-                <Phone class="phone-1">
-                    <img src={iphone1} />
-                </Phone>
-                <Phone class="tablet">
-                    <img src={iphone2} />
+                <div class="tablet">
+                    <img src={web2} />
+                </div>
+                <Phone class="tablet-phone">
+                    <img src={web1} />
                 </Phone>
             </div>
             <a

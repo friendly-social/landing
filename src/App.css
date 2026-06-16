@@ -199,11 +199,17 @@
         }
     }
 
-    > .tablet {
+    > .tablet-phone {
         height: 230px;
-        width: 230px;
+        width: 110px;
+        margin-left: -135px;
+        margin-bottom: -8px;
+    }
+
+    > .tablet {
+        width: 450px;
         margin-left: -30px;
-        border-radius: 15px;
+        margin-bottom: -16px;
 
         img {
             object-fit: contain;
