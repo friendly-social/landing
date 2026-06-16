@@ -137,6 +137,10 @@
     }
 }
 
+.platform-grid-container {
+    scroll-margin-top: 70px;
+}
+
 .platform-grid {
     display: flex;
     flex-flow: row wrap;
