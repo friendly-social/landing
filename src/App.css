@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .surface {
     min-height: 100dvh;
     width: 100%;
@@ -131,7 +133,7 @@
     }
 }
 
-@media (min-width: 40rem) {
+@variant md {
     .friendly-chip-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -200,21 +202,32 @@
     }
 
     > .tablet-phone {
-        height: 230px;
-        width: 110px;
-        margin-left: -135px;
-        margin-bottom: -8px;
+        height: 130px;
+        width: 70px;
+        margin-left: -85px;
+
+        @media (width >= 25rem) {
+            margin-bottom: 5px;
+            margin-left: -90px;
+        }
+
+        @media (width >= 30rem) {
+            height: 230px;
+            width: 110px;
+            margin-left: -135px;
+            margin-bottom: -8px;
+        }
     }
 
     > .tablet {
-        width: 450px;
-        margin-left: -30px;
         margin-bottom: -16px;
+        max-width: 450px;
+        width: 100%;
 
         img {
             object-fit: contain;
-            height: 100%;
             width: 100%;
+            height: 100%;
         }
     }
 }

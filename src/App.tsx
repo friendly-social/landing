@@ -211,7 +211,7 @@ function Android(props: AndroidProps): JSXElement {
     return (
         <a
             class="platform"
-            href="https://github.com/friendly-social/ios"
+            href="https://github.com/friendly-social/android/releases/download/nightly/friendly-latest.apk"
             target="_blank"
         >
             <div class="platform-demos">
@@ -238,7 +238,7 @@ function Ios(props: IosProps): JSXElement {
     return (
         <a
             class="platform"
-            href="https://github.com/friendly-social/ios"
+            href="https://testflight.apple.com/join/vevpjcZ8"
             target="_blank"
         >
             <div class="platform-demos">
@@ -263,11 +263,7 @@ interface WebProps {
 
 function Web(props: WebProps): JSXElement {
     return (
-        <a
-            class="platform"
-            href="https://github.com/friendly-social/web"
-            target="_blank"
-        >
+        <a class="platform" href="https://web.getfriend.ly" target="_blank">
             <div class="platform-demos">
                 <div class="tablet">
                     <img src={web2} />

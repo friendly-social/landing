@@ -50,30 +50,27 @@ export function OpenDropdown(props: OpenDropdownProps): JSXElement {
     return (
         <div class="open-dropdown" ref={ref}>
             <button onClick={() => setOpen(!open())}>{locale.open}</button>
-            {open() && (
-                <ul>
-                    <li>
-                        <button onClick={onWebClick}>
-                            <img src="web-accent.svg" />{" "}
-                            <p>{locale.openInWeb} </p>
+            <ul style={{ display: open() ? "block" : "none" }}>
+                <li>
+                    <button onClick={onWebClick}>
+                        <img src="web-accent.svg" /> <p>{locale.openInWeb} </p>
+                    </button>
+                </li>
+                <li>
+                    {props.hasRedirect && (
+                        <button onClick={() => props.deeplink(search)}>
+                            <img src="external-link-accent.svg" />{" "}
+                            <p>{locale.openInApp} </p>
                         </button>
-                    </li>
-                    <li>
-                        {props.hasRedirect && (
-                            <button onClick={() => props.deeplink(search)}>
-                                <img src="external-link-accent.svg" />{" "}
-                                <p>{locale.openInApp} </p>
-                            </button>
-                        )}
-                    </li>
-                    <li>
-                        <button onClick={onDownloadClick}>
-                            <img src="download-accent.svg" />{" "}
-                            <p>{locale.download} </p>
-                        </button>
-                    </li>
-                </ul>
-            )}
+                    )}
+                </li>
+                <li>
+                    <button onClick={onDownloadClick}>
+                        <img src="download-accent.svg" />{" "}
+                        <p>{locale.download} </p>
+                    </button>
+                </li>
+            </ul>
         </div>
     );
 }
