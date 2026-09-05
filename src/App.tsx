@@ -196,7 +196,7 @@ function Platforms(props: PlatformsProps): JSXElement {
             <h1 class="title-centered">{props.locale.platforms.title}</h1>
             <div class="platform-grid">
                 <Android locale={props.locale} />
-                <Ios locale={props.locale} />
+                {/* <Ios locale={props.locale} /> */}
                 <Web locale={props.locale} />
             </div>
         </div>
