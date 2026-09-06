@@ -8,14 +8,11 @@ import noCreeps from "/no-creeps-accent.svg";
 import confidential from "/confidential-accent.svg";
 import appIconBanner from "/app-icon-banner.svg";
 import construction from "/construction-primary.svg";
-import iphone1 from "/iphone-1.png";
 import network from "/network.svg";
-import iphone2 from "/iphone-2.png";
 import web1 from "/web-1.png";
 import web2 from "/web-2.png";
 import android1 from "/android-1.png";
 import android2 from "/android-2.png";
-import appleAccent from "/apple-accent.svg";
 import androidAccent from "/android-accent.svg";
 import webAccent from "/web-accent.svg";
 import { Phone } from "./Phone.tsx";
@@ -230,33 +227,33 @@ function Android(props: AndroidProps): JSXElement {
     );
 }
 
-interface IosProps {
-    locale: Locale;
-}
-
-function Ios(props: IosProps): JSXElement {
-    return (
-        <a
-            class="platform"
-            href="https://testflight.apple.com/join/vevpjcZ8"
-            target="_blank"
-        >
-            <div class="platform-demos">
-                <Phone class="phone-1">
-                    <img src={iphone1} />
-                </Phone>
-                <Phone class="phone-2">
-                    <img src={iphone2} />
-                </Phone>
-            </div>
-            <div class="platform-label">
-                <img src={appleAccent} />
-                <p>{props.locale.platforms.forIos}</p>
-            </div>
-        </a>
-    );
-}
-
+// interface IosProps {
+//     locale: Locale;
+// }
+//
+// function Ios(props: IosProps): JSXElement {
+//     return (
+//         <a
+//             class="platform"
+//             href="https://testflight.apple.com/join/vevpjcZ8"
+//             target="_blank"
+//         >
+//             <div class="platform-demos">
+//                 <Phone class="phone-1">
+//                     <img src={iphone1} />
+//                 </Phone>
+//                 <Phone class="phone-2">
+//                     <img src={iphone2} />
+//                 </Phone>
+//             </div>
+//             <div class="platform-label">
+//                 <img src={appleAccent} />
+//                 <p>{props.locale.platforms.forIos}</p>
+//             </div>
+//         </a>
+//     );
+// }
+//
 interface WebProps {
     locale: Locale;
 }
