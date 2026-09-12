@@ -12,7 +12,7 @@ export interface OpenDropdownProps {
     deeplink: (search: SearchParams) => void;
 }
 
-export function OpenDropdown(props: OpenDropdownProps): JSXElement {
+export function OpenDropdown(): JSXElement {
     const [open, setOpen] = createSignal(false);
     const locale = getLocale(getLocaleCode());
     const [search] = useSearchParams();
@@ -30,13 +30,13 @@ export function OpenDropdown(props: OpenDropdownProps): JSXElement {
             document.removeEventListener("mousedown", handleOutsideClick);
     });
 
-    function onDownloadClick(): void {
-        setOpen(false);
-        props.platforms?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-        });
-    }
+    // function onDownloadClick(): void {
+    //     setOpen(false);
+    //     props.platforms?.scrollIntoView({
+    //         behavior: "smooth",
+    //         block: "start",
+    //     });
+    // }
 
     function onWebClick(): void {
         if (search.reference) {
@@ -56,20 +56,20 @@ export function OpenDropdown(props: OpenDropdownProps): JSXElement {
                         <img src="web-accent.svg" /> <p>{locale.openInWeb} </p>
                     </button>
                 </li>
-                <li>
-                    {props.hasRedirect && (
-                        <button onClick={() => props.deeplink(search)}>
-                            <img src="external-link-accent.svg" />{" "}
-                            <p>{locale.openInApp} </p>
-                        </button>
-                    )}
-                </li>
-                <li>
-                    <button onClick={onDownloadClick}>
-                        <img src="download-accent.svg" />{" "}
-                        <p>{locale.download} </p>
-                    </button>
-                </li>
+                {/* <li> */}
+                {/*     {props.hasRedirect && ( */}
+                {/*         <button onClick={() => props.deeplink(search)}> */}
+                {/*             <img src="external-link-accent.svg" />{" "} */}
+                {/*             <p>{locale.openInApp} </p> */}
+                {/*         </button> */}
+                {/*     )} */}
+                {/* </li> */}
+                {/* <li> */}
+                {/*     <button onClick={onDownloadClick}> */}
+                {/*         <img src="download-accent.svg" />{" "} */}
+                {/*         <p>{locale.download} </p> */}
+                {/*     </button> */}
+                {/* </li> */}
             </ul>
         </div>
     );

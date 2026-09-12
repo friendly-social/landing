@@ -11,9 +11,6 @@ import construction from "/construction-primary.svg";
 import network from "/network.svg";
 import web1 from "/web-1.png";
 import web2 from "/web-2.png";
-import android1 from "/android-1.png";
-import android2 from "/android-2.png";
-import androidAccent from "/android-accent.svg";
 import webAccent from "/web-accent.svg";
 import { Phone } from "./Phone.tsx";
 import type { SearchParams } from "@solidjs/router";
@@ -29,7 +26,7 @@ export function App(): JSXElement {
 
     const [search] = useSearchParams();
     createEffect(() => {
-        startRedirect({ search });
+        onWebClick({ search });
     });
 
     return (
@@ -44,16 +41,24 @@ interface StartRedirectParams {
     search: SearchParams;
 }
 
-function startRedirect(params: StartRedirectParams): void {
-    const reference = params.search.reference;
-    if (!reference) return;
-    const url = `friendly://${reference}`;
-    const href = window.location.href;
-    window.location.href = url;
-    setTimeout(() => {
-        window.location.href = href;
-    }, 100);
+function onWebClick(params: StartRedirectParams): void {
+    const search = params.search;
+    if (search.reference) {
+        const reference = encodeURIComponent(search.reference as string);
+        window.location.href = `https://web.getfriend.ly/redirect/${reference}`;
+        return;
+    }
 }
+// function startRedirect(params: StartRedirectParams): void {
+//     const reference = params.search.reference;
+//     if (!reference) return;
+//     const url = `friendly://${reference}`;
+//     const href = window.location.href;
+//     window.location.href = url;
+//     setTimeout(() => {
+//         window.location.href = href;
+//     }, 100);
+// }
 
 interface ToolbarProps {
     platforms: HTMLElement | undefined;
@@ -63,17 +68,16 @@ interface ToolbarProps {
 
 function Toolbar(props: ToolbarProps): JSXElement {
     const locale = (): Locale => props.locale;
-    const hasReference = (): boolean => props.search.reference != null;
+    // const hasReference = (): boolean => props.search.reference != null;
     return (
         <div class="toolbar-container">
             <div class="toolbar">
                 <img class="icon" src={appIconBanner} alt={locale().iconAlt} />
                 <div class="buttons">
-                    <OpenDropdown
-                        hasRedirect={hasReference()}
-                        platforms={props.platforms}
-                        deeplink={(search) => startRedirect({ search })}
-                    />
+                    <OpenDropdown />
+                    {/* hasRedirect={hasReference()} */}
+                    {/* platforms={props.platforms} */}
+                    {/* deeplink={(search) => startRedirect({ search })} */}
                 </div>
             </div>
         </div>
@@ -192,7 +196,7 @@ function Platforms(props: PlatformsProps): JSXElement {
         <div ref={props.setPlatforms} class="platform-grid-container">
             <h1 class="title-centered">{props.locale.platforms.title}</h1>
             <div class="platform-grid">
-                <Android locale={props.locale} />
+                {/* <Android locale={props.locale} /> */}
                 {/* <Ios locale={props.locale} /> */}
                 <Web locale={props.locale} />
             </div>
@@ -200,33 +204,33 @@ function Platforms(props: PlatformsProps): JSXElement {
     );
 }
 
-interface AndroidProps {
-    locale: Locale;
-}
-
-function Android(props: AndroidProps): JSXElement {
-    return (
-        <a
-            class="platform"
-            href="https://github.com/friendly-social/android/releases/download/nightly/friendly-latest.apk"
-            target="_blank"
-        >
-            <div class="platform-demos">
-                <Phone class="phone-1">
-                    <img src={android1} />
-                </Phone>
-                <Phone class="phone-2">
-                    <img src={android2} />
-                </Phone>
-            </div>
-            <div class="platform-label">
-                <img src={androidAccent} />
-                <p>{props.locale.platforms.forAndroid}</p>
-            </div>
-        </a>
-    );
-}
-
+// interface AndroidProps {
+//     locale: Locale;
+// }
+//
+// function Android(props: AndroidProps): JSXElement {
+//     return (
+//         <a
+//             class="platform"
+//             href="https://github.com/friendly-social/android/releases/download/nightly/friendly-latest.apk"
+//             target="_blank"
+//         >
+//             <div class="platform-demos">
+//                 <Phone class="phone-1">
+//                     <img src={android1} />
+//                 </Phone>
+//                 <Phone class="phone-2">
+//                     <img src={android2} />
+//                 </Phone>
+//             </div>
+//             <div class="platform-label">
+//                 <img src={androidAccent} />
+//                 <p>{props.locale.platforms.forAndroid}</p>
+//             </div>
+//         </a>
+//     );
+// }
+//
 // interface IosProps {
 //     locale: Locale;
 // }
