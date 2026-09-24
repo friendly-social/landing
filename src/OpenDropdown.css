@@ -21,9 +21,9 @@
         list-style: none;
         margin-top: 5px;
         padding: 8px;
-        border: 1px solid #ccc;
+        border: 1px solid var(--color-border);
         border-radius: 8px;
-        background-color: white;
+        background-color: var(--color-group-background);
         z-index: 1000;
         font-size: var(--text-md);
         min-width: max-content;
