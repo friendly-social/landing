@@ -19,10 +19,19 @@ import type { JSXElement } from "solid-js";
 import { createEffect, createSignal } from "solid-js";
 import { OpenDropdown } from "./OpenDropdown.tsx";
 
+type Theme = "light" | "dark";
+
 export function App(): JSXElement {
     const localeCode = getLocaleCode();
     const locale = getLocale(localeCode);
     const [platforms, setPlatforms] = createSignal<HTMLElement | undefined>();
+    const [theme, setTheme] = createSignal<Theme>(getInitialTheme());
+
+    createEffect(() => {
+        const isDark = theme() === "dark";
+        document.documentElement.classList.toggle("dark-theme", isDark);
+        localStorage.setItem("theme", theme());
+    });
 
     const [search] = useSearchParams();
     createEffect(() => {
@@ -31,10 +40,28 @@ export function App(): JSXElement {
 
     return (
         <div class="surface">
-            <Toolbar platforms={platforms()} locale={locale} search={search} />
+            <Toolbar
+                platforms={platforms()}
+                locale={locale}
+                search={search}
+                theme={theme()}
+                toggleTheme={() =>
+                    setTheme(theme() === "dark" ? "light" : "dark")
+                }
+            />
             <Content locale={locale} setPlatforms={setPlatforms} />
         </div>
     );
+}
+
+function getInitialTheme(): Theme {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+        return savedTheme;
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
 }
 
 interface StartRedirectParams {
@@ -64,6 +91,8 @@ interface ToolbarProps {
     platforms: HTMLElement | undefined;
     search: SearchParams;
     locale: Locale;
+    theme: Theme;
+    toggleTheme: () => void;
 }
 
 function Toolbar(props: ToolbarProps): JSXElement {
@@ -74,6 +103,17 @@ function Toolbar(props: ToolbarProps): JSXElement {
             <div class="toolbar">
                 <img class="icon" src={appIconBanner} alt={locale().iconAlt} />
                 <div class="buttons">
+                    <button
+                        class="theme-toggle"
+                        onClick={props.toggleTheme}
+                        aria-label={
+                            props.theme === "dark"
+                                ? "Switch to light mode"
+                                : "Switch to dark mode"
+                        }
+                    >
+                        {props.theme === "dark" ? "Light" : "Dark"}
+                    </button>
                     <OpenDropdown />
                     {/* hasRedirect={hasReference()} */}
                     {/* platforms={props.platforms} */}

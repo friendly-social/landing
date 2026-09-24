@@ -17,11 +17,27 @@
 
 :root {
     color: #ff0000; /* noticeable if anything doesn't use custom component */
+    color-scheme: light;
     line-height: 1.5;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark-theme {
+    --color-background: #1c1c1e;
+    --color-group-background: #000000;
+    --color-foreground: #ffffff;
+
+    --color-primary: #ffffff;
+    --color-secondary: #98989d;
+    --color-accent: #0a84ff;
+
+    --color-border: #38383a;
+    --color-shadow: #00000080;
+
+    color-scheme: dark;
 }
 
 body {
