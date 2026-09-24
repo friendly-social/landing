@@ -21,7 +21,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: color-mix(
+        in srgb,
+        var(--color-group-background) 80%,
+        transparent
+    );
     backdrop-filter: blur(10px);
     padding: 7px;
     border-radius: 8px;
@@ -37,6 +41,18 @@
     > .buttons {
         display: flex;
         gap: 4px;
+
+        > .theme-toggle {
+            color: var(--color-accent);
+            font-size: var(--text-md);
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        > .theme-toggle:hover {
+            text-decoration: underline;
+        }
 
         > .web-version {
             color: var(--color-accent);
