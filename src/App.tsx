@@ -3,35 +3,37 @@ import { getLocaleCode } from "./index.locale.ts";
 import type { Locale } from "./App.locale.tsx";
 import { getLocale } from "./App.locale.tsx";
 import searchX from "/search-x-accent.svg";
+import searchXDark from "/search-x-accent-dark.svg";
 import sparkles from "/sparkles-accent.svg";
+import sparklesDark from "/sparkles-accent-dark.svg";
 import noCreeps from "/no-creeps-accent.svg";
+import noCreepsDark from "/no-creeps-accent-dark.svg";
 import confidential from "/confidential-accent.svg";
+import confidentialDark from "/confidential-accent-dark.svg";
 import appIconBanner from "/app-icon-banner.svg";
-import construction from "/construction-primary.svg";
+import appIconBannerDark from "/app-icon-banner-dark.svg";
+import constructionBlack from "/construction-black.svg";
+import constructionWhite from "/construction-white.svg";
 import network from "/network.svg";
+import networkDark from "/network-dark.svg";
 import web1 from "/web-1.png";
+import web1Dark from "/web-1-dark.png";
 import web2 from "/web-2.png";
+import web2Dark from "/web-2-dark.png";
 import webAccent from "/web-accent.svg";
+import webAccentDark from "/web-accent-dark.svg";
 import { Phone } from "./Phone.tsx";
 import type { SearchParams } from "@solidjs/router";
 import { useSearchParams } from "@solidjs/router";
 import type { JSXElement } from "solid-js";
 import { createEffect, createSignal } from "solid-js";
 import { OpenDropdown } from "./OpenDropdown.tsx";
-
-type Theme = "light" | "dark";
+import { useTheme } from "./theme.ts";
 
 export function App(): JSXElement {
     const localeCode = getLocaleCode();
     const locale = getLocale(localeCode);
     const [platforms, setPlatforms] = createSignal<HTMLElement | undefined>();
-    const [theme, setTheme] = createSignal<Theme>(getInitialTheme());
-
-    createEffect(() => {
-        const isDark = theme() === "dark";
-        document.documentElement.classList.toggle("dark-theme", isDark);
-        localStorage.setItem("theme", theme());
-    });
 
     const [search] = useSearchParams();
     createEffect(() => {
@@ -40,28 +42,10 @@ export function App(): JSXElement {
 
     return (
         <div class="surface">
-            <Toolbar
-                platforms={platforms()}
-                locale={locale}
-                search={search}
-                theme={theme()}
-                toggleTheme={() =>
-                    setTheme(theme() === "dark" ? "light" : "dark")
-                }
-            />
+            <Toolbar platforms={platforms()} locale={locale} search={search} />
             <Content locale={locale} setPlatforms={setPlatforms} />
         </div>
     );
-}
-
-function getInitialTheme(): Theme {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light" || savedTheme === "dark") {
-        return savedTheme;
-    }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
 }
 
 interface StartRedirectParams {
@@ -91,29 +75,29 @@ interface ToolbarProps {
     platforms: HTMLElement | undefined;
     search: SearchParams;
     locale: Locale;
-    theme: Theme;
-    toggleTheme: () => void;
 }
 
 function Toolbar(props: ToolbarProps): JSXElement {
     const locale = (): Locale => props.locale;
+    const theme = useTheme();
     // const hasReference = (): boolean => props.search.reference != null;
     return (
         <div class="toolbar-container">
             <div class="toolbar">
-                <img class="icon" src={appIconBanner} alt={locale().iconAlt} />
+                {theme() === "light" ? (
+                    <img
+                        class="icon"
+                        src={appIconBanner}
+                        alt={locale().iconAlt}
+                    />
+                ) : (
+                    <img
+                        class="icon"
+                        src={appIconBannerDark}
+                        alt={locale().iconAlt}
+                    />
+                )}
                 <div class="buttons">
-                    <button
-                        class="theme-toggle"
-                        onClick={props.toggleTheme}
-                        aria-label={
-                            props.theme === "dark"
-                                ? "Switch to light mode"
-                                : "Switch to dark mode"
-                        }
-                    >
-                        {props.theme === "dark" ? "Light" : "Dark"}
-                    </button>
                     <OpenDropdown />
                     {/* hasRedirect={hasReference()} */}
                     {/* platforms={props.platforms} */}
@@ -130,11 +114,16 @@ interface ContentProps {
 }
 
 function Content(props: ContentProps): JSXElement {
+    const theme = useTheme();
     return (
         <div class="content">
             <div class="h-[64px]" />
             <div class="section-spacer" />
-            <img class="network" src={network} />
+            {theme() === "light" ? (
+                <img class="network" src={network} />
+            ) : (
+                <img class="network" src={networkDark} />
+            )}
             <div class="section-spacer" />
             <WhatIsFriendly locale={props.locale} />
             <div class="section-spacer" />
@@ -175,9 +164,14 @@ interface NoGlobalSearchProps {
 }
 
 function NoGlobalSearch(props: NoGlobalSearchProps): JSXElement {
+    const theme = useTheme();
     return (
         <div class="chip">
-            <img src={searchX} />
+            {theme() === "light" ? (
+                <img src={searchX} />
+            ) : (
+                <img src={searchXDark} />
+            )}
             <h2>{props.locale.noGlobalSearch.title}</h2>
             <p>{props.locale.noGlobalSearch.body}</p>
         </div>
@@ -189,9 +183,14 @@ interface NoCreepsProps {
 }
 
 function NoCreeps(props: NoCreepsProps): JSXElement {
+    const theme = useTheme();
     return (
         <div class="chip">
-            <img src={noCreeps} />
+            {theme() === "light" ? (
+                <img src={noCreeps} />
+            ) : (
+                <img src={noCreepsDark} />
+            )}
             <h2>{props.locale.noCreeps.title}</h2>
             <p>{props.locale.noCreeps.body}</p>
         </div>
@@ -203,9 +202,14 @@ interface NaturalFitProps {
 }
 
 function NaturalFit(props: NaturalFitProps): JSXElement {
+    const theme = useTheme();
     return (
         <div class="chip">
-            <img src={sparkles} />
+            {theme() === "light" ? (
+                <img src={sparkles} />
+            ) : (
+                <img src={sparklesDark} />
+            )}
             <h2>{props.locale.naturalFit.title}</h2>
             <p>{props.locale.naturalFit.body}</p>
         </div>
@@ -217,9 +221,14 @@ interface ConfidentialProps {
 }
 
 function Confidential(props: ConfidentialProps): JSXElement {
+    const theme = useTheme();
     return (
         <div class="chip">
-            <img src={confidential} />
+            {theme() === "light" ? (
+                <img src={confidential} />
+            ) : (
+                <img src={confidentialDark} />
+            )}
             <h2>{props.locale.confidential.title}</h2>
             <p>{props.locale.confidential.body}</p>
         </div>
@@ -303,18 +312,31 @@ interface WebProps {
 }
 
 function Web(props: WebProps): JSXElement {
+    const theme = useTheme();
     return (
         <a class="platform" href="https://web.getfriend.ly" target="_blank">
             <div class="platform-demos">
                 <div class="tablet">
-                    <img src={web2} />
+                    {theme() === "light" ? (
+                        <img src={web2} />
+                    ) : (
+                        <img src={web2Dark} />
+                    )}
+                    <Phone class="tablet-phone">
+                        {theme() === "light" ? (
+                            <img src={web1} />
+                        ) : (
+                            <img src={web1Dark} />
+                        )}
+                    </Phone>
                 </div>
-                <Phone class="tablet-phone">
-                    <img src={web1} />
-                </Phone>
             </div>
             <div class="platform-label">
-                <img class="p-[3px]" src={webAccent} />
+                {theme() === "light" ? (
+                    <img class="p-[3px]" src={webAccent} />
+                ) : (
+                    <img class="p-[3px]" src={webAccentDark} />
+                )}
                 <p>{props.locale.platforms.forWeb}</p>
             </div>
         </a>
@@ -326,16 +348,21 @@ interface FooterProps {
 }
 
 function Footer(props: FooterProps): JSXElement {
-    const github = "https://github.com/friendly-social";
+    const theme = useTheme();
+    const git = "https://git.getfriend.ly";
 
     return (
         <div class="footer">
-            <img src={construction} />
+            {theme() === "light" ? (
+                <img src={constructionBlack} />
+            ) : (
+                <img src={constructionWhite} />
+            )}
             <p>{props.locale.footer.underConstruction}</p>
             <p>
-                GitHub:{" "}
+                Git:{" "}
                 <b>
-                    <a href={github}>friendly-social</a>
+                    <a href={git}>git.getfriend.ly</a>
                 </b>
             </p>
         </div>

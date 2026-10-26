@@ -25,19 +25,21 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-html.dark-theme {
-    --color-background: #1c1c1e;
-    --color-group-background: #000000;
-    --color-foreground: #ffffff;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: #1c1c1e;
+        --color-group-background: #000000;
+        --color-foreground: #ffffff;
 
-    --color-primary: #ffffff;
-    --color-secondary: #98989d;
-    --color-accent: #0a84ff;
+        --color-primary: #ffffff;
+        --color-secondary: #98989d;
+        --color-accent: #2f5eff;
 
-    --color-border: #38383a;
-    --color-shadow: #00000080;
+        --color-border: #38383a;
+        --color-shadow: #00000080;
 
-    color-scheme: dark;
+        color-scheme: dark;
+    }
 }
 
 body {

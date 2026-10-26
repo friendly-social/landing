@@ -42,18 +42,6 @@
         display: flex;
         gap: 4px;
 
-        > .theme-toggle {
-            color: var(--color-accent);
-            font-size: var(--text-md);
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 8px;
-        }
-
-        > .theme-toggle:hover {
-            text-decoration: underline;
-        }
-
         > .web-version {
             color: var(--color-accent);
             font-size: var(--text-md);
@@ -217,33 +205,30 @@
         }
     }
 
-    > .tablet-phone {
-        height: 130px;
-        width: 70px;
-        margin-left: -85px;
-
-        @media (width >= 25rem) {
-            margin-bottom: 5px;
-            margin-left: -90px;
-        }
-
-        @media (width >= 30rem) {
-            height: 230px;
-            width: 110px;
-            margin-left: -135px;
-            margin-bottom: -8px;
-        }
-    }
-
     > .tablet {
-        margin-bottom: -16px;
-        max-width: 450px;
+        max-width: 720px;
         width: 100%;
+        position: relative;
 
-        img {
+        @media (width > 30rem) {
+            padding-right: 100px;
+        }
+
+        > img {
             object-fit: contain;
             width: 100%;
             height: 100%;
+        }
+
+        > .tablet-phone {
+            height: 100%;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+
+            img {
+                height: 100%;
+            }
         }
     }
 }

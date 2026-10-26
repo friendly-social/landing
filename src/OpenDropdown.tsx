@@ -5,6 +5,7 @@ import { createEffect, createSignal } from "solid-js";
 import { getLocale } from "./OpenDropdown.locale.tsx";
 import { getLocaleCode } from "./index.locale.ts";
 import type { SearchParams } from "@solidjs/router";
+import { useTheme } from "./theme.ts";
 
 export interface OpenDropdownProps {
     hasRedirect: boolean;
@@ -16,6 +17,7 @@ export function OpenDropdown(): JSXElement {
     const [open, setOpen] = createSignal(false);
     const locale = getLocale(getLocaleCode());
     const [search] = useSearchParams();
+    const theme = useTheme();
 
     let ref!: HTMLDivElement;
 
@@ -53,7 +55,12 @@ export function OpenDropdown(): JSXElement {
             <ul style={{ display: open() ? "block" : "none" }}>
                 <li>
                     <button onClick={onWebClick}>
-                        <img src="web-accent.svg" /> <p>{locale.openInWeb} </p>
+                        {theme() === "light" ? (
+                            <img src="web-accent.svg" />
+                        ) : (
+                            <img src="web-accent-dark.svg" />
+                        )}
+                        <p>{locale.openInWeb} </p>
                     </button>
                 </li>
                 {/* <li> */}
