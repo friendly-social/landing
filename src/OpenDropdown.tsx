@@ -41,9 +41,9 @@ export function OpenDropdown(): JSXElement {
     // }
 
     function onWebClick(): void {
-        if (search.reference) {
-            const reference = encodeURIComponent(search.reference as string);
-            window.location.href = `https://web.getfriend.ly/redirect/${reference}`;
+        if (search.redirect) {
+            const redirect = encodeURIComponent(search.redirect as string);
+            window.location.href = `https://web.getfriend.ly/redirect/${redirect}`;
             return;
         }
         window.location.href = "https://web.getfriend.ly";

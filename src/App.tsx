@@ -54,16 +54,16 @@ interface StartRedirectParams {
 
 function onWebClick(params: StartRedirectParams): void {
     const search = params.search;
-    if (search.reference) {
-        const reference = encodeURIComponent(search.reference as string);
-        window.location.href = `https://web.getfriend.ly/redirect/${reference}`;
+    if (search.redirect) {
+        const redirect = encodeURIComponent(search.redirect as string);
+        window.location.href = `https://web.getfriend.ly/redirect/${redirect}`;
         return;
     }
 }
 // function startRedirect(params: StartRedirectParams): void {
-//     const reference = params.search.reference;
-//     if (!reference) return;
-//     const url = `friendly://${reference}`;
+//     const redirect = params.search.redirect;
+//     if (!redirect) return;
+//     const url = `friendly://${redirect}`;
 //     const href = window.location.href;
 //     window.location.href = url;
 //     setTimeout(() => {
@@ -80,7 +80,7 @@ interface ToolbarProps {
 function Toolbar(props: ToolbarProps): JSXElement {
     const locale = (): Locale => props.locale;
     const theme = useTheme();
-    // const hasReference = (): boolean => props.search.reference != null;
+    // const hasRedirect = (): boolean => props.search.redirect != null;
     return (
         <div class="toolbar-container">
             <div class="toolbar">
@@ -99,7 +99,7 @@ function Toolbar(props: ToolbarProps): JSXElement {
                 )}
                 <div class="buttons">
                     <OpenDropdown />
-                    {/* hasRedirect={hasReference()} */}
+                    {/* hasRedirect={hasRedirect()} */}
                     {/* platforms={props.platforms} */}
                     {/* deeplink={(search) => startRedirect({ search })} */}
                 </div>
