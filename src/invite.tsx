@@ -127,8 +127,13 @@ interface InviteOkProps {
 function InviteOk(props: InviteOkProps): JSXElement {
     const [expiration, setExpiration] = createSignal<string | null>(null);
 
-    const avatarUrl = (): string =>
-        friendlyClient.createImageUrl(props.data.avatar);
+    const avatarUrl = (): string | null =>
+        props.data.avatar
+            ? friendlyClient.createImageUrl(props.data.avatar)
+            : null;
+    const avatarFallback = (): string =>
+        getAvatarFallbackForNickname(props.data.nickname)
+
     const small = mediaQuery.create("(max-width: 35rem)");
     const deeplink = encodeURIComponent(`add/${props.token}`);
     const url = friendlyClient.createDeeplinkUrl(deeplink);
@@ -182,14 +187,27 @@ function InviteOk(props: InviteOkProps): JSXElement {
                 gap: 1rem;
                 `}
             >
-                <img
+                <div
                     style={`
                     height: ${small() ? "7rem" : "10rem"};
                     width: ${small() ? "7rem" : "10rem"};
                     border-radius: 100%;
-                    `}
-                    src={avatarUrl()}
-                />
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--color-muted);
+                    color: var(--color-secondary);
+                    `}>
+                    {avatarUrl()
+                        ? <img
+                            style="width: 100%; height: 100%;"
+                            src={avatarUrl()!}
+                        />
+                        : <p style={`font-size: ${small() ? "2rem" : "4rem"}`}>
+                            {avatarFallback()}
+                          </p>
+                    }
+                </div>
                 <p class="text-lg" style="font-weight: bold;">
                     {props.data.nickname}
                 </p>
@@ -277,7 +295,7 @@ function Toolbar(): JSXElement {
                 backdrop-filter: blur(10px);
                 border-radius: 0.5rem;
                 border-width: 1px;
-                border-color: var(--color-border);
+                border-color: var(--color-muted);
                 align-items: center;
                 `}
             >
@@ -293,4 +311,15 @@ function Toolbar(): JSXElement {
             </div>
         </div>
     );
+}
+
+export function getAvatarFallbackForNickname(
+    nickname: string,
+): string {
+    if (nickname.trim().length === 0) return "";
+    const words = nickname.toUpperCase().split(' ');
+    return words
+        .slice(0, 2)
+        .map(word => word[0])
+        .join('');
 }

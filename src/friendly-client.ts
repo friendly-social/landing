@@ -37,7 +37,7 @@ export interface FriendsAddDetailsResultOk {
     nickname: string;
     description: string;
     interests: string[];
-    avatar: FileDescriptor;
+    avatar?: FileDescriptor;
     expiration: string;
 }
 

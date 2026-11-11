@@ -9,8 +9,8 @@
     --color-secondary: #8e8e93;
     --color-accent: #007aff;
 
-    --color-border: #d8d8dc;
-    --color-shadow: #00000020;
+    --color-muted: #d8d8dc;
+    --color-avatar-fallback-background: #38383a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,7 +23,7 @@
         --color-secondary: #98989d;
         --color-accent: #2f5eff;
 
-        --color-border: #38383a;
+        --color-muted: #38383a;
         --color-shadow: #00000080;
 
         color-scheme: dark;

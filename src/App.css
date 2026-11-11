@@ -31,7 +31,7 @@
     padding: 7px;
     border-radius: 8px;
     border-width: 1px;
-    border-color: var(--color-border);
+    border-color: var(--color-muted);
 
     > .icon {
         height: 100%;
