@@ -5,7 +5,6 @@
     > button {
         background: var(--color-accent);
         color: #ffffff;
-        font-size: var(--text-md);
         font-weight: bold;
         padding: 5px 10px;
         border-radius: 8px;

@@ -1,0 +1,13 @@
+.go-home {
+    border: 1px solid var(--color-border);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 150ms;
+
+    &:hover {
+        background: var(--color-border);
+        cursor: pointer;
+    }
+}

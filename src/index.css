@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@tailwind base;
-
 @theme {
     --color-background: #f2f2f7;
     --color-group-background: #ffffff;
@@ -13,16 +11,6 @@
 
     --color-border: #d8d8dc;
     --color-shadow: #00000020;
-}
-
-:root {
-    color: #ff0000; /* noticeable if anything doesn't use custom component */
-    color-scheme: light;
-    line-height: 1.5;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,6 +30,37 @@
     }
 }
 
+:root {
+    color: var(--color-primary);
+    background: var(--color-group-background);
+    color-scheme: light;
+    line-height: 1.5;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 body {
     margin: 0;
+}
+
+h1 {
+    color: var(--color-primary);
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+    line-height: calc(1.75 / 1.125);
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

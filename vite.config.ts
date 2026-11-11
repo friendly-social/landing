@@ -7,4 +7,9 @@ export default defineConfig({
         solid(),
         tailwindcss()
     ],
+    css: {
+        modules: {
+            localsConvention: "camelCase",
+        },
+    }
 })

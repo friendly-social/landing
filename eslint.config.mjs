@@ -18,7 +18,11 @@ export default defineConfig(
                     caughtErrorsIgnorePattern: "^_"
                 }
             ],
-            "@typescript-eslint/explicit-function-return-type": ["error"],
+            "@typescript-eslint/explicit-function-return-type": [
+                "error",
+                { "allowExpressions": true }
+            ],
+            "@typescript-eslint/no-non-null-assertion": ["off"],
         },
     },
 );

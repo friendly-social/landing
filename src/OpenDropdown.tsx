@@ -1,4 +1,4 @@
-import "./OpenDropdown.css";
+import classes from "./OpenDropdown.module.css";
 import type { JSXElement } from "solid-js";
 import { useSearchParams } from "@solidjs/router";
 import { createEffect, createSignal } from "solid-js";
@@ -50,7 +50,7 @@ export function OpenDropdown(): JSXElement {
     }
 
     return (
-        <div class="open-dropdown" ref={ref}>
+        <div class={classes.openDropdown} ref={ref}>
             <button onClick={() => setOpen(!open())}>{locale.open}</button>
             <ul style={{ display: open() ? "block" : "none" }}>
                 <li>

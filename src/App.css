@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
+/* TODO: migrate to css modules */
+
 .surface {
     min-height: 100dvh;
     width: 100%;
-    background: var(--color-group-background);
     display: flex;
     flex-direction: column;
 }
@@ -95,7 +96,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 840px;
+    max-width: 50rem;
     padding: 0px 20px;
 
     p {

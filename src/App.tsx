@@ -29,6 +29,7 @@ import type { JSXElement } from "solid-js";
 import { createEffect, createSignal } from "solid-js";
 import { OpenDropdown } from "./OpenDropdown.tsx";
 import { useTheme } from "./theme.ts";
+import { Invite } from "./invite.tsx";
 
 export function App(): JSXElement {
     const localeCode = getLocaleCode();
@@ -118,6 +119,8 @@ function Content(props: ContentProps): JSXElement {
     return (
         <div class="content">
             <div class="h-[64px]" />
+            <div class="section-spacer" />
+            <Invite />
             <div class="section-spacer" />
             {theme() === "light" ? (
                 <img class="network" src={network} />
