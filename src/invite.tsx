@@ -191,8 +191,8 @@ function InviteOk(props: InviteOkProps): JSXElement {
                     style={`
                     height: ${small() ? "7rem" : "10rem"};
                     width: ${small() ? "7rem" : "10rem"};
-                    border-radius: 100%;
                     display: flex;
+                    border-radius: 100%;
                     align-items: center;
                     justify-content: center;
                     background: var(--color-muted);
@@ -200,7 +200,11 @@ function InviteOk(props: InviteOkProps): JSXElement {
                     `}>
                     {avatarUrl()
                         ? <img
-                            style="width: 100%; height: 100%;"
+                            style={`
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 100%;
+                            `}
                             src={avatarUrl()!}
                         />
                         : <p style={`font-size: ${small() ? "2rem" : "4rem"}`}>

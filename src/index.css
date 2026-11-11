@@ -10,7 +10,6 @@
     --color-accent: #007aff;
 
     --color-muted: #d8d8dc;
-    --color-avatar-fallback-background: #38383a;
 }
 
 @media (prefers-color-scheme: dark) {
